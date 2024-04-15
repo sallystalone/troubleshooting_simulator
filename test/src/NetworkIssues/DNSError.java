@@ -7,7 +7,6 @@ import java.net.UnknownHostException;
 public class DNSError {
     private String domainName;
     private String newDomainName;
-    private int errorCode;
 
     public DNSError(String domainName) {
         this.domainName=domainName;

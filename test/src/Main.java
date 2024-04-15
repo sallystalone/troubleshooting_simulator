@@ -1,6 +1,6 @@
 import NetworkIssues.DNSError;
-import NetworkIssues.NetworkIssue;
 import NetworkIssues.Timestamp;
+import NetworkIssues.RoutingError;
 
 import java.util.Scanner;
 
@@ -28,7 +28,7 @@ public class Main {
 
                     break;
                 case 3:
-
+                    handleRoutingIssue();
                     break;
                 case 4:
 
@@ -44,11 +44,11 @@ public class Main {
             }
         }
     }
-    public static Timestamp timestamp = new Timestamp();
+    static Timestamp timestamp = new Timestamp();
     private static void handleDNSIssue() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("Enter the domain name you are trying to access" + "For back to main menu press 2 ");
+            System.out.println("Enter the domain name you are trying to access" + " For back to main menu press 2 ");
             String userInput = scanner.nextLine();
             if (userInput.equals("2")) {
                 break;
@@ -58,4 +58,11 @@ public class Main {
                 timestamp.getTimestamp();
             }
         }
-    }}
+    }
+    private static void handleRoutingIssue() {
+        RoutingError routingError = new RoutingError();
+        routingError.getRoutingError();
+        timestamp.getTimestamp();
+
+    }
+}
