@@ -1,6 +1,4 @@
-import NetworkIssues.DNSError;
-import NetworkIssues.Timestamp;
-import NetworkIssues.RoutingError;
+import NetworkIssues.*;
 
 import java.util.Scanner;
 
@@ -11,7 +9,7 @@ public class Main {
         while (menuChoice != 6) {
             System.out.println("Please enter your network troubleshooting scenario:\n" +
                     "1-DNS ERROR\n" +
-                    "2-DHCP ISSUE\n" +
+                    "2-DHCP LEASE\n" +
                     "3-ROUTING ERROR\n" +
                     "4-NETWORK CONGESTION\n" +
                     "5-COMBINATION SCENARIO\n" +
@@ -25,13 +23,13 @@ public class Main {
                     handleDNSIssue();
                     break;
                 case 2:
-
+                    handleDhcpIssue();
                     break;
                 case 3:
                     handleRoutingIssue();
                     break;
                 case 4:
-
+                    handleNetworkCongestion();
                     break;
                 case 5:
 
@@ -64,5 +62,14 @@ public class Main {
         routingError.getRoutingError();
         timestamp.getTimestamp();
 
+    }
+    private static void handleDhcpIssue(){
+        DHCPError dhcpError = new DHCPError();
+        dhcpError.getDates();
+        timestamp.getTimestamp();
+    }
+    private static void handleNetworkCongestion(){
+        NetworkCongestion networkCongestion = new NetworkCongestion();
+        networkCongestion.getNetworkCongestion();
     }
 }
