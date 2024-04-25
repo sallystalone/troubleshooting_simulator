@@ -52,7 +52,7 @@ public class DHCPError {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
 
-            System.out.println("Lease obtained: " + leaseDateTime.format(formatter) + " Lease expires:" + renewDateTime.format(formatter));
+            System.out.println( "Lease obtained: " + renewDateTime.format(formatter) + " Lease expires: " + leaseDateTime.format(formatter) );
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }

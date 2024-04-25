@@ -32,7 +32,7 @@ public class Main {
                     handleNetworkCongestion();
                     break;
                 case 5:
-
+                    handleCombination();
                     break;
                 case 6:
                     System.out.println("Exiting...");
@@ -71,5 +71,9 @@ public class Main {
     private static void handleNetworkCongestion(){
         NetworkCongestion networkCongestion = new NetworkCongestion();
         networkCongestion.getNetworkCongestion();
+    }
+    private static void handleCombination(){
+        Combination combination = new Combination();
+        combination.combinationScenario();
     }
 }

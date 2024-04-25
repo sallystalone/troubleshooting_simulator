@@ -8,8 +8,10 @@ public class DNSError {
     private String domainName;
     private String newDomainName;
 
+
     public DNSError(String domainName) {
         this.domainName=domainName;
+
 
     }
     public void printDomainInfo() {
@@ -27,10 +29,13 @@ public class DNSError {
                 String hostName = inetHost.getHostName();
                 System.out.println("The host name: " + hostName);
                 System.out.println("The host's IP address is: " + inetHost.getHostAddress());
+
             }
         } catch (UnknownHostException e) {
             System.out.println("Failure! Host didn't find" );
         }
+
+
     }
 }
 
