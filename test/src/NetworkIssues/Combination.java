@@ -1,7 +1,6 @@
 package NetworkIssues;
 
 import java.util.Scanner;
-import java.util.stream.StreamSupport;
 
 public class Combination {
 
