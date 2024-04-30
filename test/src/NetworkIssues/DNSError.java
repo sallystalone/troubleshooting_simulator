@@ -16,17 +16,22 @@ public class DNSError {
     }
     public void printDomainInfo() {
         try {
+            // Check if the domain name already contains ".com"
             boolean containsCom=domainName.contains(".com");
             if(containsCom==false){
                newDomainName=domainName.concat(".com");
                 System.out.println(".com added! ");
+                // Get InetAddress object for the new domain name
                 InetAddress inetHost = InetAddress.getByName(newDomainName);
                 String hostName = inetHost.getHostName();
+                // Print the host name and IP address
                 System.out.println("The host name: " + hostName);
                 System.out.println("The host's IP address is: " + inetHost.getHostAddress());
             }else{
+                // If the domain name already contains ".com", proceed with it
                 InetAddress inetHost = InetAddress.getByName(domainName);
                 String hostName = inetHost.getHostName();
+                // Print the host name and IP address
                 System.out.println("The host name: " + hostName);
                 System.out.println("The host's IP address is: " + inetHost.getHostAddress());
 

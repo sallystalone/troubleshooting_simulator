@@ -6,6 +6,7 @@ public class Combination {
 
 
     public void combinationScenario(){
+        //Calling the classes with static keyword
         handleDNSIssue();
         handleDhcpIssue();
         handleNetworkCongestion();
@@ -14,6 +15,7 @@ public class Combination {
     }
 
 
+//Creating the instances of other classes.
 
     private static void handleDNSIssue() {
         Scanner scanner = new Scanner(System.in);

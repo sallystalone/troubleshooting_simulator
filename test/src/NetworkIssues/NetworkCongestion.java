@@ -18,11 +18,13 @@ public class NetworkCongestion {
 
         while (true) {
             String finish = scanner.nextLine();
+            // If the user enters '2', exit the loop
             if (finish.equals("2")) {
                 break;
             }
 
             try {
+                // Execute tcpdump command to track network traffic
                 ProcessBuilder processBuilder = new ProcessBuilder("sudo", "tcpdump", "-i", "en0", "host", sourceIP, "and", "host", destinationIP);
                 Process process = processBuilder.start();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -31,14 +33,16 @@ public class NetworkCongestion {
                 int receivedPackets = 0;
 
                 String line;
+                // Read each line of the tcpdump output
                 while ((line = reader.readLine()) != null) {
+                    // Count the number of packets sent and received
                     if (line.contains(sourceIP)) {
                         sentPackets++;
                     } else if (line.contains(destinationIP)) {
                         receivedPackets++;
                     }
                 }
-
+                // Calculate packet loss percentage
                 int packetLoss = sentPackets - receivedPackets;
                 packetLossPercentage = (double) packetLoss / sentPackets * 100;
 
@@ -48,7 +52,7 @@ public class NetworkCongestion {
                 e.printStackTrace();
             }
         }
-
+        // Print the packet loss percentage
         if (packetLossPercentage == 0) {
             System.out.println("Packet loss is %0");
         } else {

@@ -9,14 +9,16 @@ public class RoutingError {
     public void getRoutingError() {
         try {
             System.out.println("Please wait. Reading the information...!");
+            // Execute netstat -r command to get routing information
             ProcessBuilder processBuilder = new ProcessBuilder("netstat", "-r");
             Process process = processBuilder.start();
-
+            // Read the output of the netstat command
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
+                // If the line contains "Internet6:", stop reading
                 if (line.contains("Internet6:")) {
                     break;
                 }
@@ -29,6 +31,7 @@ public class RoutingError {
                     "\n Identify any missing or incorrect entries, such as IP addresses without specified gateways. " +
                     "\n Review the connection status, paying attention to validity indicators like \"expire\" or \"age.\" " +
                     "\n Finally, recommend and implement any necessary corrections to address the identified issues.--- ");
+            // Wait for the netstat process to complete
             process.waitFor();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();

@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        //Main class
         int menuChoice = 0;
         Scanner scanner = new Scanner(System.in);
         while (menuChoice != 6) {
@@ -15,9 +16,10 @@ public class Main {
                     "5-COMBINATION SCENARIO\n" +
                     "6-EXIT"
             );
-
+            //User choice turns to integer
             menuChoice = Integer.parseInt(scanner.nextLine());
 
+            //Handling the choice
             switch (menuChoice) {
                 case 1:
                     handleDNSIssue();
@@ -47,10 +49,12 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Enter the domain name you are trying to access" + " For back to main menu press 2 ");
+            //Getting the user input of domain name
             String userInput = scanner.nextLine();
             if (userInput.equals("2")) {
                 break;
             } else {
+                //Creating dnsError instance
                 DNSError dnsError = new DNSError(userInput);
                 dnsError.printDomainInfo();
                 timestamp.getTimestamp();

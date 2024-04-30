@@ -12,11 +12,12 @@ public class DHCPError {
 
     public void getDates() {
         try {
-
+            //Passing the commands as arguments
             ProcessBuilder processBuilder = new ProcessBuilder("ipconfig", "getpacket", "en0");
+            //Executing the commands
             Process process = processBuilder.start();
 
-
+            //Reading the output of commands
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
             long renewTime = 0;
@@ -24,14 +25,17 @@ public class DHCPError {
 
             String line;
             while ((line = reader.readLine()) != null) {
+                //Finding the renew and lease keywords in the output
 
                 if (line.contains("renew")) {
+                    //Turning it to suitable format
                     String renewHex = line.split(" ")[line.split(" ").length - 1];
 
                     renewTime = Long.parseLong(renewHex.substring(2), 16);
                 }
 
                  else if (line.contains("lease")) {
+                     //Turning it to suitable format
                     String leaseHex=line.split(" ")[line.split(" ").length - 1];
 
                     leaseTime = Long.parseLong(leaseHex.substring(2), 16);
@@ -42,15 +46,15 @@ public class DHCPError {
             process.waitFor();
 
             Instant startInstant = Instant.now();
-
+            // Creates Instant objects for renewal and lease times
             Instant renewInstant = startInstant.plusSeconds(renewTime);
             Instant leaseInstant = startInstant.plusSeconds(leaseTime);
-
+            // Converts renewal and lease times to LocalDateTime objects
             LocalDateTime renewDateTime = LocalDateTime.ofInstant(renewInstant, ZoneId.systemDefault());
             LocalDateTime leaseDateTime = LocalDateTime.ofInstant(leaseInstant, ZoneId.systemDefault());
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
-
+            //Printing obtain and expire date.
             System.out.println( "Lease obtained: " + renewDateTime.format(formatter) + " Lease expires: " + leaseDateTime.format(formatter) );
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
