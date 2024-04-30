@@ -42,3 +42,12 @@ public class Combination {
     }
 }
 
+
+/*
+Function handleCombination():
+    // Handle combination of network issues
+    handleDNSIssue()
+    handleDhcpIssue()
+    handleRoutingIssue()
+    handleNetworkCongestion()
+ */

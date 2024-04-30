@@ -39,3 +39,26 @@ public class DNSError {
     }
 }
 
+/*
+Function handleDNSIssue():
+    // Handle DNS-related issues
+    userInput = ReadInput("Enter the domain name you are trying to access (Enter '2' to go back to the main menu): ")
+    If userInput == "2":
+        ReturnToMainMenu()
+    Else:
+        dnsError = DNSError(userInput)
+        dnsError.printDomainInfo()
+
+Function printDomainInfo():
+    // Print domain information after resolving DNS
+    If domainName does not end with ".com":
+        Append ".com" to domainName
+    Try:
+        inetHost = ResolveDomain(domainName)
+        Print("The host name: " + inetHost.getHostName())
+        Print("The host's IP address is: " + inetHost.getHostAddress())
+    Catch UnknownHostException:
+        Print("Failure! Host not found.")
+
+ */
+

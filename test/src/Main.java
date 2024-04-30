@@ -77,3 +77,19 @@ public class Main {
         combination.combinationScenario();
     }
 }
+/*
+Function DisplayMainMenu():
+    Print menu options for network troubleshooting scenarios.
+
+Function ReadUserChoice():
+    Read user input for menu selection and return choice.
+
+Function HandleMenuChoice(choice):
+    Call corresponding function/method based on user choice.
+
+Function Main():
+    While user choice is not to exit:
+        DisplayMainMenu()
+        HandleMenuChoice(ReadUserChoice())
+
+ */

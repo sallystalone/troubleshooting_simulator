@@ -20,7 +20,6 @@ public class DHCPError {
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
             long renewTime = 0;
-            long rebindTime = 0;
             long leaseTime=0;
 
             String line;
@@ -58,3 +57,24 @@ public class DHCPError {
         }
     }
 }
+
+/*
+Function handleDhcpIssue():
+    // Handle DHCP lease-related issues
+    dhcpError = DHCPError()
+    dhcpError.getDates()
+
+Function getDates():
+    // Retrieve DHCP lease information
+    ExecuteSystemCommand("ipconfig getpacket en0")
+    ParseOutputAndCalculateLeaseTimes()
+
+Function ParseOutputAndCalculateLeaseTimes():
+    // Parse command output and calculate lease times
+    While line in commandOutput:
+        If line contains "renew":
+            renewTime = ParseRenewTime(line)
+        Else If line contains "lease":
+            leaseTime = ParseLeaseTime(line)
+    CalculateLeaseExpirationTime(renewTime, leaseTime)
+ */
